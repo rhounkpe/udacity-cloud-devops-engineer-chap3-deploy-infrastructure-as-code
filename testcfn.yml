@@ -1,0 +1,33 @@
+Description: >
+    Rufin Hounkpe / Digit Com
+    This template deploys a VPC.
+Resources:
+    # Name: A name you want to give to the resource (does this have to be unique across all resource types?)
+    UdacityVPC:
+        # Type: Specifies the actual hardware resource that you’re deploying.
+        Type: AWS::EC2::VPC
+        Properties:
+            # CidrBlock: The primary IPv4 CIDR block for the VPC. Required: Yes; Type: String
+            CidrBlock: 10.0.0.0/16
+            # EnableDnsHostnames: Indicates whether the instances launched in the VPC get DNS hostnames. 
+            # If enabled, instances in the VPC get DNS hostnames; otherwise, they do not. 
+            # Disabled by default for nondefault VPCs. For more information, see DNS Support in Your VPC.
+            # You can only enable DNS hostnames if you've enabled DNS support.
+            # Required: No
+            # Type: Boolean
+            EnableDnsHostnames: 'false'
+            # Indicates whether the DNS resolution is supported for the VPC.
+            #  Enabled by default.
+            # Required: No Type: Boolean
+            EnableDnsSupport: 'false'
+            # The allowed tenancy of instances launched into the VPC.
+            InstanceTenancy: dedicated
+            # Tags: The tags for the VPC. Required: No; Type: List of Tag
+            # You can use the Resource Tags property to apply tags to resources, which can help you identify and categorize those resources.
+            Tags:
+                - Key: "keyname1"
+                  Value: "value1"
+                - Key: "keyname2"
+                  Value: "value2"
+
+# aws cloudformation create-stack --stack-name ourfirsttest --region us-west-2 --template-body file://testcfn.yml
